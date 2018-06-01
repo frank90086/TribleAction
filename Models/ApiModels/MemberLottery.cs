@@ -1,9 +1,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace TribleAction.Entities
+namespace TribleAction.Models.ApiModels
 {
-    public class Lottery
+    public class MemberLottery : EntityBase
     {
         public string Id { get; set; }
         public string MemberId { get; set; }

@@ -1,0 +1,10 @@
+C:\Users\frankhsu\Desktop\TribleAction\bin\Debug\netcoreapp2.0\TribleAction.deps.json
+C:\Users\frankhsu\Desktop\TribleAction\bin\Debug\netcoreapp2.0\TribleAction.runtimeconfig.json
+C:\Users\frankhsu\Desktop\TribleAction\bin\Debug\netcoreapp2.0\TribleAction.runtimeconfig.dev.json
+C:\Users\frankhsu\Desktop\TribleAction\bin\Debug\netcoreapp2.0\TribleAction.dll
+C:\Users\frankhsu\Desktop\TribleAction\bin\Debug\netcoreapp2.0\TribleAction.pdb
+C:\Users\frankhsu\Desktop\TribleAction\obj\Debug\netcoreapp2.0\TribleAction.csproj.CoreCompileInputs.cache
+C:\Users\frankhsu\Desktop\TribleAction\obj\Debug\netcoreapp2.0\TribleAction.AssemblyInfoInputs.cache
+C:\Users\frankhsu\Desktop\TribleAction\obj\Debug\netcoreapp2.0\TribleAction.AssemblyInfo.cs
+C:\Users\frankhsu\Desktop\TribleAction\obj\Debug\netcoreapp2.0\TribleAction.dll
+C:\Users\frankhsu\Desktop\TribleAction\obj\Debug\netcoreapp2.0\TribleAction.pdb

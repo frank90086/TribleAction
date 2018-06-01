@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TribleAction.Entities
+namespace TribleAction.Models.ApiModels
 {
-    public class Member
+    public class Member : EntityBase
     {
         public Member()
         {
-            Lottery = new HashSet<Lottery>();
+            Lottery = new HashSet<MemberLottery>();
         }
         public string Id { get; set; }
         public string TeamId { get; set; }
@@ -16,7 +16,7 @@ namespace TribleAction.Entities
         public int Score { get; set; }
 
         public virtual Team Team { get; set; }
-        public virtual ICollection<Lottery> Lottery { get; set; }
+        public virtual ICollection<MemberLottery> Lottery { get; set; }
 
     }
 }

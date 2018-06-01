@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TribleAction.Entities;
+using TribleAction.Models.ApiModels;
 
 namespace TribleAction
 {
@@ -24,8 +24,7 @@ namespace TribleAction
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<ActionContext>(options =>
-                  options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
+            services.Configure<ApiBaseUrl>(Configuration.GetSection("ApiBaseUrl"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
