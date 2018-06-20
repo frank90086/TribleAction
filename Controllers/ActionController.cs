@@ -22,7 +22,7 @@ namespace TribleAction.Controllers
         [HttpGet]
         public IActionResult Lottery()
         {
-            ViewData["Message"] = "請選擇一個樂透號碼：";
+            ViewData["Message"] = "請輸入你的小隊代碼：";
             return View();
         }
 
@@ -31,17 +31,32 @@ namespace TribleAction.Controllers
         {
             if (!String.IsNullOrEmpty(teamId))
             {
-                var response = _client.Get<ReturnResult<Team>>("Action/"+teamId);
+                var response = _client.Get<ReturnResult<ICollection<int>>>("Action/" + teamId);
                 if (response.HttpStatusCode == HttpStatusCode.OK)
                 {
-                    var numlist = response.Result.TeamLottery.Select(x => new { num = x.Number}).ToList();
+                    var numlist = response.Result;
                     return Json(new { info = true, numlist = numlist });
                 }
                 else
-                return Json(new { info = false, numlist = new { } });
+                    return Json(new { info = false, numlist = new { } });
             }
             else
                 return Json(new { info = false, numlist = new { } });
+        }
+
+        [HttpPost]
+        public JsonResult ChooseNumber(string teamId, int number)
+        {
+            if (number != 0)
+            {
+                var response = _client.Post<ReturnResult<bool>, ChooseNumberApiModel>("Action/Choose", new ChooseNumberApiModel(){TeamId = teamId, Number = number});
+                if (response.HttpStatusCode == HttpStatusCode.OK)
+                return Json(new { info = true});
+                else
+                    return Json(new { info = false});
+            }
+            else
+                return Json(new { info = false});
         }
 
         [HttpPost]
