@@ -26,7 +26,7 @@
                         type: 'danger',
                         allow_dismiss: false
                     });
-                    $.notify('輸入錯誤，請從新查詢');
+                    $.notify(response.message);
                 }
             }
         });
@@ -72,14 +72,14 @@ function sendLotteryNumber() {
                                     type: 'success',
                                     allow_dismiss: false
                                 });
-                                $.notify('操作成功！');
+                                $.notify(response.message);
                             }
                             else {
                                 $.notifyDefaults({
                                     type: 'danger',
                                     allow_dismiss: false
                                 });
-                                $.notify('發生錯誤，請重新操作');
+                                $.notify(response.message);
                                 $('#sendLotteryButton').attr('disabled', false);
                             }
                         }
@@ -90,7 +90,7 @@ function sendLotteryNumber() {
                         type: 'danger',
                         allow_dismiss: false
                     });
-                    $.notify('尚未開放大樂透，請關注Line@相關資訊');
+                    $.notify(response.message);
                 }
             }
         });

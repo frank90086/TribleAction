@@ -49,10 +49,10 @@ namespace TribleAction.Controllers
                     return Json(new { info = true, numlist = numlist });
                 }
                 else
-                    return Json(new { info = false, numlist = new { } });
+                    return Json(new { info = false, numlist = new { }, message = "代碼錯誤，請重新查詢" });
             }
             else
-                return Json(new { info = false, numlist = new { } });
+                return Json(new { info = false, numlist = new { }, message = "代碼錯誤，請重新查詢" });
         }
 
         [HttpPost]
@@ -62,12 +62,14 @@ namespace TribleAction.Controllers
             {
                 var response = _client.Post<ReturnResult<bool>, ChooseNumberApiModel>("Action/Choose", new ChooseNumberApiModel() { TeamId = teamId, Number = number });
                 if (response.HttpStatusCode == HttpStatusCode.OK)
-                    return Json(new { info = true });
+                    return Json(new { info = true, message = "選取號碼 - " + number + "，操作成功！" });
+                else if (response.HttpStatusCode == HttpStatusCode.Continue)
+                    return Json(new { info = false, message = "此時段已選擇，敬請期待下次開放" });
                 else
-                    return Json(new { info = false });
+                    return Json(new { info = false, message = "發生錯誤，請重新操作" });
             }
             else
-                return Json(new { info = false });
+                return Json(new { info = false, message = "發生錯誤，請重新操作" });
         }
 
         [HttpPost]
@@ -85,14 +87,14 @@ namespace TribleAction.Controllers
                 if (checkTime(now, check))
                     return Json(new { info = true });
             }
-            return Json(new { info = false , now = now});
+            return Json(new { info = false, message = "尚未開放大樂透，請關注Line@相關資訊" });
         }
 
         private bool checkTime(DateTimeOffset now, DateTimeOffset check)
         {
             if (DateTimeOffset.Compare(now, check) < 0)
                 return false;
-            check.AddHours(1);
+            check = check.AddHours(1);
             if (DateTimeOffset.Compare(now, check) <= 0)
                 return true;
             else
