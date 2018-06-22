@@ -25,6 +25,16 @@ namespace TribleAction
         {
             services.AddMvc();
             services.Configure<ApiBaseUrl>(Configuration.GetSection("ApiBaseUrl"));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +57,8 @@ namespace TribleAction
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseCors("CorsPolicy");
         }
     }
 }

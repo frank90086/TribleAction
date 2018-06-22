@@ -3,7 +3,7 @@
         $('#chooseSection').html("");
         $.ajax({
             method: 'POST',
-            url: 'LotteryNumberList',
+            url: 'http://tribleaction.azurewebsites.net/Action/LotteryNumberList',
             data:{ teamId: $('#teamIdInput').val()},
             success: function(response){
                 if (response.info) {
@@ -49,7 +49,7 @@ function sendLotteryNumber() {
     else {
         $.ajax({
             method: 'POST',
-            url: 'ChooseNumber',
+            url: 'http://tribleaction.azurewebsites.net/Action/ChooseNumber',
             data:{ teamId: $('#teamIdInput').val(), number: number},
             success: function(response){
                 if (response.info) {
