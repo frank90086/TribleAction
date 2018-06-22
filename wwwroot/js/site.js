@@ -3,7 +3,10 @@
         $('#chooseSection').html("");
         $.ajax({
             method: 'POST',
-            url: 'http://tribleaction.azurewebsites.net/Action/LotteryNumberList',
+            url: 'https://tribleaction.azurewebsites.net/action/LotteryNumberList',
+            xhrFields: {
+                withCredentials: true
+            },
             data:{ teamId: $('#teamIdInput').val()},
             success: function(response){
                 if (response.info) {
@@ -49,7 +52,10 @@ function sendLotteryNumber() {
     else {
         $.ajax({
             method: 'POST',
-            url: 'http://tribleaction.azurewebsites.net/Action/ChooseNumber',
+            url: 'https://tribleaction.azurewebsites.net/action/ChooseNumber',
+            xhrFields: {
+                withCredentials: true
+            },
             data:{ teamId: $('#teamIdInput').val(), number: number},
             success: function(response){
                 if (response.info) {

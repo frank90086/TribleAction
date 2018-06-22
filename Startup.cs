@@ -50,15 +50,13 @@ namespace TribleAction
             }
 
             app.UseStaticFiles();
-
+            app.UseCors("CorsPolicy");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            app.UseCors("CorsPolicy");
         }
     }
 }
