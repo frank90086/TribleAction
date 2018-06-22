@@ -12,6 +12,7 @@
                 if (response.info) {
                     $('#teamIdInput').attr('disabled', true);
                     $('#teamIdButton').attr('disabled', true);
+                    $('#chooseSection').html("");
                     for (var i = 1; i <= 48; i++) {
                         if ($.inArray(i, response.numlist) >= 0) {
                             $('#chooseSection').append('<label for="'+i+'">'+i+'</label><input id="'+i+'" type="radio" name="lottery" value="'+i+'" disabled>');
