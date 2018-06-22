@@ -3,7 +3,7 @@
         $('#chooseSection').html("");
         $.ajax({
             method: 'POST',
-            url: 'https://tribleaction.azurewebsites.net/action/LotteryNumberList',
+            url: 'LotteryNumberList',
             xhrFields: {
                 withCredentials: true
             },
@@ -19,7 +19,7 @@
                             $('#chooseSection').append('<label for="'+i+'">'+i+'</label><input id="'+i+'" type="radio" name="lottery" value="'+i+'">');
                         }
                     }
-                    $('#chooseSection').append('<button onclick="sendLotteryNumber()">送出</button>');
+                    $('#chooseSection').append('<button id="sendLotteryButton" onclick="sendLotteryNumber()">送出</button>');
                 }
                 else {
                     $.notifyDefaults({
@@ -50,27 +50,47 @@ function sendLotteryNumber() {
         $.notify('請選擇一個號碼！');
     }
     else {
+        $('#sendLotteryButton').attr('disabled', true);
         $.ajax({
-            method: 'POST',
-            url: 'https://tribleaction.azurewebsites.net/action/ChooseNumber',
+            method: 'GET',
+            url: 'CheckTime',
             xhrFields: {
                 withCredentials: true
             },
-            data:{ teamId: $('#teamIdInput').val(), number: number},
             success: function(response){
                 if (response.info) {
-                    $.notifyDefaults({
-                        type: 'success',
-                        allow_dismiss: false
+                    $.ajax({
+                        method: 'POST',
+                        url: 'ChooseNumber',
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        data:{ teamId: $('#teamIdInput').val(), number: number},
+                        success: function(response){
+                            if (response.info) {
+                                $.notifyDefaults({
+                                    type: 'success',
+                                    allow_dismiss: false
+                                });
+                                $.notify('操作成功！');
+                            }
+                            else {
+                                $.notifyDefaults({
+                                    type: 'danger',
+                                    allow_dismiss: false
+                                });
+                                $.notify('發生錯誤，請重新操作');
+                                $('#sendLotteryButton').attr('disabled', false);
+                            }
+                        }
                     });
-                    $.notify('操作成功！');
                 }
                 else {
                     $.notifyDefaults({
                         type: 'danger',
                         allow_dismiss: false
                     });
-                    $.notify('發生錯誤，請重新操作');
+                    $.notify('尚未開放大樂透，請關注Line@相關資訊');
                 }
             }
         });
