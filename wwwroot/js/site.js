@@ -15,12 +15,12 @@
                     $('#chooseSection').html("");
                     for (var i = 1; i <= 48; i++) {
                         if ($.inArray(i, response.numlist) >= 0) {
-                            $('#chooseSection').append('<label for="'+i+'">'+i+'</label><input id="'+i+'" type="radio" name="lottery" value="'+i+'" disabled>');
+                            $('#chooseSection').append('<input id="'+i+'" type="radio" name="lottery" value="'+i+'" disabled><label for="'+i+'">'+i+'</label>');
                         } else {
-                            $('#chooseSection').append('<label for="'+i+'">'+i+'</label><input id="'+i+'" type="radio" name="lottery" value="'+i+'">');
+                            $('#chooseSection').append('<input id="'+i+'" type="radio" name="lottery" value="'+i+'"><label for="'+i+'">'+i+'</label>');
                         }
                     }
-                    $('#chooseSection').append('<button id="sendLotteryButton" onclick="sendLotteryNumber()">送出</button>');
+                    $('#chooseSection').append('<button id="sendLotteryButton" onclick="sendLotteryNumber() style="width:40%">送出</button>');
                 }
                 else {
                     $.notifyDefaults({

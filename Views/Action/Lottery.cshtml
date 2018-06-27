@@ -3,21 +3,21 @@
 }
 <h2>@ViewData["Title"]</h2>
 
-<div class="row">
-    <div class="col-md-3">
-        <h4>@ViewData["Message"]</h4>
+<div class="container body-content lottery_body">
+    <h2>踢踢節 - 線上樂透</h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>@ViewData["Message"]</h4>
+        </div>
+        <div class="col-sm-6">
+            <input id="teamIdInput"/>
+        </div>
+        <div class="col-sm-3">
+            <button id="teamIdButton" onclick="sendTeamId()">查詢</button>
+        </div>
     </div>
-    <div class="col-md-6">
-        <input id="teamIdInput"/>
+    <div class="row">
+        <div class="col-sm-12" id="chooseSection">
+        </div>
     </div>
-    <div class="col-md-3">
-        <button id="teamIdButton" onclick="sendTeamId()">查詢</button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12" id="chooseSection">
-
-    </div>
-
 </div>

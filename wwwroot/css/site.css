@@ -1,35 +1,133 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+
+.lottery_body {
+	text-align: center;
+	font-family: '微軟正黑體';
+	background: linear-gradient(45deg, rgba(220, 174, 112, 0.9)24%, rgba(251, 251, 255, 0.9)75%),url(../images/Trible_logo_顏色加深_高檔.png) no-repeat center;
+	background-size: cover;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@media screen and (max-width:769px){
+.lottery_body h2{
+	border-bottom: 2px solid #dbdbdb;
+	padding-bottom: 2vh;
+	padding-top: 5vh;
+}}
+
+.lottery_body .row{
+	min-height:30vh ;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.lottery_body .col-sm-3 h4{
+	font-size: 1.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+@media screen and (max-width:769px){
+.lottery_body .col-sm-3 h4{
+	padding-top: 10vh;
+}
+}
+#teamIdInput{
+	padding: 1vh;
+	border: none;
+	border-bottom: 1px solid darkcyan;
+	background-color: transparent;
+	width:100%;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+#teamIdInput:focus, #teamIdInput:active{
+	border: none;
+	border-bottom: 1px solid darkgoldenrod;
+	outline: none;
+}
+@media screen and (max-width:769px){
+#teamIdButton{
+	margin-top: 2vh;
+}
+}
+#teamIdButton {
+	width: 100%;
+	border: 2px solid #005050;
+	background-color: darkcyan;
+	padding: 1vh 1vw;
+	color: #fff;
+	font-weight: bolder;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+#teamIdButton:active,#teamIdButton:focus{
+	outline: none;
+	background-color: darkgoldenrod;
+	border-color: rgb(47,34,3);
+}
+
+#chooseSection{
+	margin-top: 3vh;
+	font-weight: bolder;
+}
+
+#chooseSection label{
+	width: 25%;
+}
+
+#chooseSection h3{
+	border-bottom: 2px solid darkgoldenrod;
+	padding-bottom: 2vh;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #333;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: darkcyan;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+#chooseSection button{
+	background-color: darkgoldenrod;
+	border:2px solid rgb(47,34,3);
+	color: #fff;
+	padding: 5px;
+	margin-top: 15px;
 }
