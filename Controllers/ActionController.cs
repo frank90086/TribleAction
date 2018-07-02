@@ -87,7 +87,7 @@ namespace TribleAction.Controllers
                 if (checkTime(now, check))
                     return Json(new { info = true });
             }
-            return Json(new { info = false, message = "尚未開放大樂透，請關注Line@相關資訊" });
+            return Json(new { info = false, message = "尚未開放大樂透，請關注Line@相關資訊" , timeNow=now});
         }
 
         private bool checkTime(DateTimeOffset now, DateTimeOffset check)
