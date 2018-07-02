@@ -20,7 +20,7 @@
                             $('#chooseSection').append('<input id="'+i+'" type="radio" name="lottery" value="'+i+'"><label for="'+i+'">'+i+'</label>');
                         }
                     }
-                    $('#chooseSection').append('<button id="sendLotteryButton" onclick="sendLotteryNumber() style="width:40%">送出</button>');
+                    $('#chooseSection').append('<button id="sendLotteryButton" onclick="sendLotteryNumber()" style="width:40%">送出</button>');
                 }
                 else {
                     $.notifyDefaults({
