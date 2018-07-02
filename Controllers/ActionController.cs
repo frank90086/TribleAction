@@ -19,9 +19,9 @@ namespace TribleAction.Controllers
         HttpClientHelper _client;
         private List<DateTimeOffset> timeTable = new List<DateTimeOffset>()
         {
-            new DateTimeOffset(2018, 7, 7, 10, 0, 00, new TimeSpan(8, 0, 0)),
-            new DateTimeOffset(2018, 7, 7, 13, 0, 00, new TimeSpan(8, 0, 0)),
-            new DateTimeOffset(2018, 7, 7, 16, 0, 00, new TimeSpan(8, 0, 0))
+            new DateTimeOffset(2018, 7, 7, 9, 0, 00, new TimeSpan(8, 0, 0)),
+            new DateTimeOffset(2018, 7, 7, 14, 0, 00, new TimeSpan(8, 0, 0)),
+            new DateTimeOffset(2018, 7, 7, 17, 0, 00, new TimeSpan(8, 0, 0))
         };
         public ActionController(IOptions<ApiBaseUrl> setting)
         {
@@ -94,7 +94,7 @@ namespace TribleAction.Controllers
         {
             if (DateTimeOffset.Compare(now, check) < 0)
                 return false;
-            check = check.AddHours(1);
+            check = check.AddHours(2);
             if (DateTimeOffset.Compare(now, check) <= 0)
                 return true;
             else
